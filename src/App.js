@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 import ImageCard from './components/ImageCard';
+import Spinner from './components/Spinner';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -22,7 +23,7 @@ function App() {
   return (
     <div className="container mx-auto">
       {isLoading ? (
-        ''
+        <Spinner />
       ) : (
         <div className="grid grid-cols-3 gap-4">
           {images.map(image => (
