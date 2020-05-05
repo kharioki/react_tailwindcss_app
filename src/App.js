@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 
 import ImageCard from './components/ImageCard';
 import Spinner from './components/Spinner';
+import ImageSearch from './components/ImageSearch';
 
 function App() {
   const [images, setImages] = useState([]);
@@ -22,6 +23,12 @@ function App() {
 
   return (
     <div className="container mx-auto">
+      <ImageSearch searchText={text => setSearchTerm(text)} />
+
+      {!isLoading && images.length === 0 && (
+        <h1 className="text-5xl text-center mx-auto mt-32 text-gray-400">No images found for <strong className="text-gray-800">{searchTerm}</strong>!!</h1>
+      )}
+
       {isLoading ? (
         <Spinner />
       ) : (
